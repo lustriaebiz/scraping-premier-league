@@ -1,0 +1,21 @@
+{
+  "name": "scrap-website",
+  "version": "1.0.0",
+  "description": "Scrap a static website with Axios and Cheerio",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ebiz",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/cheerio": "^0.22.16",
+    "typescript": "^3.8.3"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "cheerio": "^1.0.0-rc.3",
+    "dotenv": "^8.2.0",
+    "nodemon": "^2.0.2"
+  }
+}
