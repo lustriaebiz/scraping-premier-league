@@ -12,27 +12,29 @@ class Scrap {
 
             const html          = response.data;
             const $             = cheerio.load(html);
-            const statsTable    = $('.statsTableContainer > tr');
+            const statsTable    = $('.tableBodyContainer.isPL > tr');
 
-            console.log('statsTable: ', $(statsTable[0]).find('td'));
-
-            const topPremierLeagueScorers: any = [];
+            /** table premier league */
+            const premierLeagueTable: any = [];
 
             for (let index = 0; index < statsTable.length; index++) {
-                const rank          = $(statsTable[index]).find('.rank > strong').text();
-                const playerName    = $(statsTable[index]).find('.playerName > strong').text();
-                const nationality   = $(statsTable[index]).find('.playerCountry').text();
-                const goals         = $(statsTable[index]).find('.mainStat').text();
-    
-                topPremierLeagueScorers.push({
-                    rank,
-                    name: playerName,
-                    nationality,
-                    goals,
-                });
+                let rank = parseInt($(statsTable[index]).find('.pos > .value').text());
+                let team = $(statsTable[index]).find('.team > a > .long').text();
+
+                if(rank && team) {
+
+                    // push data
+                    premierLeagueTable.push({
+                        rank: rank,
+                        team: team
+                    });
+
+                }
+                
+                
             }
 
-            console.log('topPremierLeagueScorers: ', topPremierLeagueScorers);
+            console.log('Table Premier League: ',premierLeagueTable);
 
         }).catch(error => {
             console.log('Error: ', error);
